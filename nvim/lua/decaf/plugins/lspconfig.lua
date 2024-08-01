@@ -48,6 +48,7 @@ return {
       -- Keymaps
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
       vim.keymap.set("n", "cc", vim.lsp.buf.rename, { desc = "LSP rename" })
+      vim.keymap.set("n", "<C-x>", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
     end
   },
   {

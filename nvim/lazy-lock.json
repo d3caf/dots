@@ -1,8 +1,10 @@
 {
+  "CopilotChat.nvim": { "branch": "canary", "commit": "4a5e07185b37d3132e5541d8fa42aa874b774476" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "39e2eda76828d88b773cc27a3f61d2ad782c922d" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "conform.nvim": { "branch": "master", "commit": "25d48271e3d4404ba017cb92a37d3a681c1ad149" },
+  "copilot.vim": { "branch": "release", "commit": "25f73977033c597d530c7ab0e211d99b60927d2d" },
   "grug-far.nvim": { "branch": "main", "commit": "10a1ad724eee440c899d422d8e1c6383dbac469e" },
   "lazy.nvim": { "branch": "main", "commit": "077102c5bfc578693f12377846d427f49bc50076" },
   "mini.icons": { "branch": "main", "commit": "660f3987ebcb13e573b654362854206c72d6c024" },
