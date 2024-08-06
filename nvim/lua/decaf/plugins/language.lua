@@ -53,5 +53,26 @@ return {
   },
   {
     "yioneko/nvim-vtsls"
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
+  {
+    "DNLHC/glance.nvim",
+    config = function()
+      require("glance").setup({})
+
+      vim.keymap.set("n", "gD", "<CMD>Glance definitions<CR>", { desc = "Glance definitions" })
+      vim.keymap.set("n", "gR", "<CMD>Glance references<CR>", { desc = "Glance references" })
+      vim.keymap.set("n", "gY", "<CMD>Glance type_definitions<CR>", { desc = "Glance type definitions" })
+      vim.keymap.set("n", "gM", "<CMD>Glance implementations<CR>", { desc = "Glance implementations" })
+    end,
+    event = { "LspAttach" }
   }
 }
