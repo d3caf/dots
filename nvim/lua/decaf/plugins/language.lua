@@ -45,6 +45,9 @@ return {
       -- Rust
       lspconfig.rust_analyzer.setup {}
 
+      -- YAML
+      lspconfig.yamlls.setup {}
+
       -- Keymaps
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
       vim.keymap.set("n", "cc", vim.lsp.buf.rename, { desc = "LSP rename" })
