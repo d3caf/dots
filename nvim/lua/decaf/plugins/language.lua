@@ -39,7 +39,7 @@ return {
 
       -- Elixir
       lspconfig.elixirls.setup {
-        cmd = { "/Users/aanguiano/.local/bin/elixirls" }
+        cmd = { vim.fn.expand("$HOME/.local/bin/elixirls") }
       }
 
       -- Rust
