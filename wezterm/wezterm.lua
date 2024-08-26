@@ -6,9 +6,9 @@ config.font_size = 13.0
 config.color_scheme = "catppuccin-mocha";
 config.enable_scroll_bar = false;
 config.window_padding = {
-  left = ".5cell",
-  right = ".5cell",
-  top = "1cell",
+  left = "1cell",
+  right = "1cell",
+  top = "1.5cell",
   bottom = ".5cell"
 };
 
