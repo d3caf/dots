@@ -34,6 +34,9 @@ return {
         }
       }
 
+      -- Eslint
+      lspconfig.eslint.setup {}
+
       -- Typescript
       lspconfig.vtsls.setup {}
 
