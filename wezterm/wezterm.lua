@@ -1,7 +1,7 @@
 local wezterm = require('wezterm');
 local config = wezterm.config_builder();
 
-config.font = wezterm.font("FiraCode Nerd Font");
+config.font = wezterm.font("FiraCode Nerd Font", { weight = 'Medium' });
 config.font_size = 13.0
 config.color_scheme = "catppuccin-mocha";
 config.enable_scroll_bar = false;
