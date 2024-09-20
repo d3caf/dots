@@ -51,6 +51,12 @@ return {
       -- YAML
       lspconfig.yamlls.setup {}
 
+      -- Twig
+      lspconfig.twiggy_language_server.setup {}
+
+      -- CSS
+      lspconfig.cssls.setup {}
+
       -- Keymaps
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
       vim.keymap.set("n", "cc", vim.lsp.buf.rename, { desc = "LSP rename" })
