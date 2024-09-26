@@ -41,8 +41,17 @@ return {
       lspconfig.vtsls.setup {}
 
       -- Elixir
-      lspconfig.elixirls.setup {
-        cmd = { vim.fn.expand("$HOME/.local/bin/elixirls") }
+      -- lspconfig.elixirls.setup {
+      --   cmd = { vim.fn.expand("$HOME/.local/bin/elixirls") }
+      -- }
+      lspconfig.lexical.setup {
+        cmd = { vim.fn.expand("$HOME/c/lexical/_build/dev/package/lexical/bin/start_lexical.sh") },
+        root_dir = function(fname)
+          return util.root_pattern("mix.exs", ".git")(fname) or vim.loop.cwd()
+        end,
+        filetypes = { "elixir", "eelixir", "heex" },
+        -- optional settings
+        settings = {}
       }
 
       -- Rust
@@ -56,6 +65,12 @@ return {
 
       -- CSS
       lspconfig.cssls.setup {}
+     
+      -- JSON
+      lspconfig.jsonls.setup {}
+
+      -- Python
+      lspconfig.pyright.setup {}
 
       -- Keymaps
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
