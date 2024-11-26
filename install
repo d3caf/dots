@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+CONFIG_DIR=~/.config
+
+echo "Creating config directory"
+mkdir -p $CONFIG_DIR
+
+for d in */ ; do
+  echo "Linking directory $d"
+  ln -s $(pwd)/${d%/} $CONFIG_DIR/${d%/}
+done
+
