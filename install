@@ -2,7 +2,7 @@
 set -euxo pipefail
 
 CONFIG_DIR=~/.config
-BREW_PACKAGES=("delta" "neovim" "bat" "lazygit" "bat" "z")
+BREW_PACKAGES=("delta" "neovim" "bat" "lazygit" "bat" "z" "luarocks" "antigen" "pure")
 
 echo "Creating config directory"
 mkdir -p $CONFIG_DIR
@@ -18,7 +18,8 @@ then
   exit 1
 fi
 
-brew install ${BREW_PACKAGES[@]}
+brew update && brew install ${BREW_PACKAGES[@]}
 
-echo "Configuring ohmyzsh (extending zshrc)"
-cat $CONFIG_DIR/zsh/.zshrc-base >> ~/.zshrc
+echo "Configuring ohmyzsh (extending zshrc). Make sure you've installed ohmyzsh."
+echo "source $CONFIG_DIR/zsh/.zshrc-base" >> ~/.zshrc
+echo "source $CONFIG_DIR/zsh/.antigen" >> ~/.zshrc

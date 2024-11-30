@@ -1,6 +1,20 @@
-eval "$(/opt/homebrew/bin/mise activate zsh)"
+# eval "$(/opt/homebrew/bin/mise activate zsh)"
+# ^ shouldn't be needed since omzsh includes a mise plugin
+
+### ALIASES
 alias vim=nvim
 
-# Install oh-my-zsh first
-# https://ohmyz.sh/#install
-plugins=(mise z fzf)
+# List files - Show file list with fzf and preview with bat
+alias lf="fzf --preview='bat {} --color=always'"
+
+alias dc="docker compose $@"
+alias imps="iex -S mix phx.server $@"
+alias python=python3
+
+# ctrl+space to accept suggestions
+bindkey '^ ' autosuggest-accept
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=4"
+
+# pure prompt
+autoload -U promptinit; promptinit
+prompt pure
