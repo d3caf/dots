@@ -1,3 +1,6 @@
+ZSH_AUTOSUGGEST_STRATEGY=(completion history match_prev_cmd)
+export GPG_TTY=$(tty)
+
 # eval "$(/opt/homebrew/bin/mise activate zsh)"
 # ^ shouldn't be needed since omzsh includes a mise plugin
 

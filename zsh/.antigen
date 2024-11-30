@@ -10,6 +10,7 @@ gh
 mix
 node
 npm
+mise
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-completions
