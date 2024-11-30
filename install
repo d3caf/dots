@@ -2,12 +2,23 @@
 set -euxo pipefail
 
 CONFIG_DIR=~/.config
+BREW_PACKAGES=("delta" "neovim" "bat" "lazygit" "bat" "z")
 
 echo "Creating config directory"
 mkdir -p $CONFIG_DIR
 
 for d in */ ; do
   echo "Linking directory $d"
-  ln -s $(pwd)/${d%/} $CONFIG_DIR/${d%/}
+  ln -sf $(pwd)/${d%/} $CONFIG_DIR/${d%/}
 done
 
+if ! command -v brew 2>&1 >/dev/null
+then
+  echo "Homebrew doesn't appear to be installed!"
+  exit 1
+fi
+
+brew install ${BREW_PACKAGES[@]}
+
+echo "Configuring ohmyzsh (extending zshrc)"
+cat $CONFIG_DIR/zsh/.zshrc-base >> ~/.zshrc

@@ -1,0 +1,6 @@
+eval "$(/opt/homebrew/bin/mise activate zsh)"
+alias vim=nvim
+
+# Install oh-my-zsh first
+# https://ohmyz.sh/#install
+plugins=(mise z fzf)
