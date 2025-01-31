@@ -2,7 +2,7 @@
 set -euxo pipefail
 
 CONFIG_DIR=~/.config
-BREW_PACKAGES=("delta" "neovim" "bat" "lazygit" "bat" "z" "luarocks" "antigen" "pure" "fd" "gnupg" "gh" "git")
+BREW_PACKAGES=("delta" "neovim" "bat" "lazygit" "bat" "z" "luarocks" "antigen" "fd" "gnupg" "gh" "git" "orbstack" "lua-language-server" "starship")
 
 echo "Creating config directory"
 mkdir -p $CONFIG_DIR

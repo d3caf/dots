@@ -55,3 +55,5 @@ opt.mouse = 'a'
 
 opt.grepprg = "rg --vimgrep"
 opt.grepformat = "%f:%l:%c:%m"
+
+opt.cmdheight = 0

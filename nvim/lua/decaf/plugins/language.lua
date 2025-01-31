@@ -1,76 +1,46 @@
 return {
   {
+    "williamboman/mason.nvim",
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
+    },
+    config = function()
+      require("mason").setup()
+    end
+  },
+  {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
+      dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-tree/nvim-web-devicons",
+      },
+      { "nvimdev/lspsaga.nvim", opts = {} }
     },
-    config = function()
+    opts = {
+      servers = {
+        lua_ls = {},
+        eslint = {},
+        vtsls = {},
+        yamlls = {},
+        twiggy_language_server = {},
+        cssls = {},
+        jsonls = {},
+        pyright = {},
+        tailwindcss = {},
+        ruff = {}
+      }
+    },
+    config = function(_, opts)
       local lspconfig = require("lspconfig")
-      local cmp_nvim_lsp = require("cmp_nvim_lsp")
-      local util = require("lspconfig/util")
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      local capabilities = cmp_nvim_lsp.default_capabilities()
-
-      local on_attach = function(client, bufnr)
-        local opts = { noremap = true, silent = true, bufnr = bufnr }
-        local g_opts = { noremap = true, silent = true }
-
-        local toggle_hints = function()
-          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-        end
+      for server, config in pairs(opts.servers) do
+        config.capabilities = capabilities
+        lspconfig[server].setup(config)
       end
-
-      -- Lua
-      lspconfig.lua_ls.setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { 'vim' }
-            }
-          }
-        }
-      }
-
-      -- Eslint
-      lspconfig.eslint.setup {}
-
-      -- Typescript
-      lspconfig.vtsls.setup {}
-
-      -- Elixir
-      -- lspconfig.elixirls.setup {
-      --   cmd = { vim.fn.expand("$HOME/.local/bin/elixirls") }
-      -- }
-      lspconfig.lexical.setup {
-        cmd = { vim.fn.expand("$HOME/c/lexical/_build/dev/package/lexical/bin/start_lexical.sh") },
-        root_dir = function(fname)
-          return util.root_pattern("mix.exs", ".git")(fname) or vim.loop.cwd()
-        end,
-        filetypes = { "elixir", "eelixir", "heex" },
-        -- optional settings
-        settings = {}
-      }
-
-      -- Rust
-      lspconfig.rust_analyzer.setup {}
-
-      -- YAML
-      lspconfig.yamlls.setup {}
-
-      -- Twig
-      lspconfig.twiggy_language_server.setup {}
-
-      -- CSS
-      lspconfig.cssls.setup {}
-     
-      -- JSON
-      lspconfig.jsonls.setup {}
-
-      -- Python
-      lspconfig.pyright.setup {}
 
       -- Keymaps
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
@@ -79,8 +49,26 @@ return {
     end
   },
   {
-    "yioneko/nvim-vtsls"
+    'linux-cultist/venv-selector.nvim',
+    branch = "regexp",
+    dependencies = { 'neovim/nvim-lspconfig', 'nvim-telescope/telescope.nvim', 'mfussenegger/nvim-dap-python' },
+    opts = {
+      pipenv_path = '/Users/andrew/.local/share/virtualenvs'
+      -- Your options go here
+      -- name = "venv",
+      -- auto_refresh = false
+    },
+    event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+    keys = {
+      -- Keymap to open VenvSelector to pick a venv.
+      -- { '<leader>vs', '<cmd>VenvSelect<cr>' },
+      -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
+      -- { '<leader>vc', '<cmd>VenvSelectCached<cr>' },
+    },
   },
+  --  {
+  --    "yioneko/nvim-vtsls"
+  --  },
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -101,5 +89,15 @@ return {
       vim.keymap.set("n", "gM", "<CMD>Glance implementations<CR>", { desc = "Glance implementations" })
     end,
     event = { "LspAttach" }
+  },
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    name = "tailwind-tools",
+    build = ":UpdateRemotePlugins",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim", -- optional
+      "neovim/nvim-lspconfig",         -- optional
+    },
   }
 }

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# TODO: Add function to add plugins variable to zshrc
+github_plugins=(
+  'zsh-users/zsh-autosuggestions'
+  'zsh-users/zsh-completions'
+  'zsh-users/zsh-syntax-highlighting'
+)
+
+for p in ${github_plugins[@]} ; do
+  dir=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/${p##*/}
+
+  echo "Cloning $p into $dir"
+  if cd $dir; then git pull; else git clone "https://github.com/${p}.git" $dir; fi
+done

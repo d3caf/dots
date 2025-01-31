@@ -18,6 +18,3 @@ alias python=python3
 bindkey '^ ' autosuggest-accept
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=4"
 
-# pure prompt
-autoload -U promptinit; promptinit
-prompt pure
