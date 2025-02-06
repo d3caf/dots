@@ -6,6 +6,6 @@ return
     });
   end,
   keys = {
-    { '<Leader>fR', '<CMD>GrugFar<CR>', 'n', { desc = "Find/replace with Grug" } }
+    { '<Leader>fR', '<CMD>GrugFar<CR>', desc = "Find/replace with Grug" }
   }
 }

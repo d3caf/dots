@@ -6,5 +6,4 @@ return {
     opts = {}
   },
   { "echasnovski/mini.icons", opts = {}, version = false },
-  { "comatory/gh-co.nvim" }
 }

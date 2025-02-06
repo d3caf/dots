@@ -4,6 +4,7 @@ return {
   dependencies = {
     "hrsh7th/cmp-buffer", -- source text in buffer
     "hrsh7th/cmp-path",   -- source file system paths
+    "hrsh7th/cmp-nvim-lsp-signature-help",
     "hrsh7th/vim-vsnip",
     "tailwind-tools",
     "onsails/lspkind-nvim"
@@ -34,8 +35,9 @@ return {
       sources = {
         { name = 'nvim_lsp' },
         { name = 'treesitter' },
-        { name = 'buffer' },
+        { name = 'nvim_lsp_signature_help' },
         { name = 'path' },
+        { name = 'buffer' },
       },
       snippet = {
         expand = function(args)

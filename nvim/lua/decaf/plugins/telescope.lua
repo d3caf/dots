@@ -33,15 +33,15 @@ return {
     keys = function()
       local tele = require('telescope.builtin')
       return {
-        { '<leader>ff',      tele.find_files,            'n', { desc = "Find files" } },
-        { '<leader><Space>', tele.find_files,            'n', { desc = "Find files" } },
-        { '<leader>fg',      tele.live_grep,             'n', { desc = "Find by grep" } },
-        { '<leader>/',       tele.live_grep,             'n', { desc = "Find by grep" } },
-        { '<leader>fb',      tele.buffers,               'n', { desc = "Find buffers" } },
-        { '<leader>fh',      tele.help_tags,             'n', { desc = "Find help" } },
-        { '<leader>fs',      tele.lsp_document_symbols,  'n', { desc = "Find symbols in document" } },
-        { '<leader>fS',      tele.lsp_workspace_symbols, 'n', { desc = "Find symbols in workspace" } },
-        { '<leader>fr',      tele.oldfiles,              'n', { desc = "Find recent files" } }
+        { '<leader>ff',      tele.find_files,            desc = "Find files" },
+        { '<leader><Space>', tele.find_files,            desc = "Find files" },
+        { '<leader>fg',      tele.live_grep,             desc = "Find by grep" },
+        { '<leader>/',       tele.live_grep,             desc = "Find by grep" },
+        { '<leader>fb',      tele.buffers,               desc = "Find buffers" },
+        { '<leader>fh',      tele.help_tags,             desc = "Find help" },
+        { '<leader>fs',      tele.lsp_document_symbols,  desc = "Find symbols in document" },
+        { '<leader>fS',      tele.lsp_workspace_symbols, desc = "Find symbols in workspace" },
+        { '<leader>fr',      tele.oldfiles,              desc = "Find recent files" }
       }
     end,
   },
