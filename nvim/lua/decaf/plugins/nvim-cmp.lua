@@ -22,6 +22,9 @@ return {
         completeopt = 'menu,menuone,noinsert',
       },
       mapping = {
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),
         ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { 'i' }),
         ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { 'i' }),
         ['<C-y>'] = cmp.mapping(

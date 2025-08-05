@@ -57,3 +57,5 @@ opt.grepprg = "rg --vimgrep"
 opt.grepformat = "%f:%l:%c:%m"
 
 opt.cmdheight = 0
+-- hopefully stop python wrapping from breaking
+opt.formatoptions:remove("t")

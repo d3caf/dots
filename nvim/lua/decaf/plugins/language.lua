@@ -13,17 +13,29 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
-      dependencies = {
-        "nvim-treesitter/nvim-treesitter",
-        "nvim-tree/nvim-web-devicons",
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+      { "nvimdev/lspsaga.nvim", opts = {} },
+      {
+        "kevinhwang91/nvim-ufo",
+        opts = {},
+        dependencies = {
+          "kevinhwang91/promise-async"
+        },
       },
-      { "nvimdev/lspsaga.nvim", opts = {} }
     },
     opts = {
       servers = {
+        -- denols = {},
         lua_ls = {},
         eslint = {},
-        vtsls = {},
+        vtsls = {
+          settings = {
+            typescript = {
+              tsdk = "/Users/andrew/c/Grow-Dashboard/grow-therapy-frontend/node_modules/typescript/lib"
+            },
+          }
+        },
         yamlls = {},
         twiggy_language_server = {},
         cssls = {},
@@ -37,6 +49,10 @@ return {
       local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      }
       for server, config in pairs(opts.servers) do
         config.capabilities = capabilities
         lspconfig[server].setup(config)
@@ -46,6 +62,15 @@ return {
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
       vim.keymap.set("n", "cc", vim.lsp.buf.rename, { desc = "LSP rename" })
       vim.keymap.set("n", "<C-x>", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
+      -- Fold config (ufo)
+      vim.o.foldcolumn = '1' -- '0' is not bad
+      vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+
+      -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
     end
   },
   {
@@ -98,6 +123,12 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "nvim-telescope/telescope.nvim", -- optional
       "neovim/nvim-lspconfig",         -- optional
+    },
+  },
+  {
+    "benomahony/uv.nvim",
+    opts = {
+      picker_integration = true,
     },
   }
 }

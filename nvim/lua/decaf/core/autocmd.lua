@@ -35,10 +35,3 @@ vim.api.nvim_create_autocmd({ "LspAttach" }, {
     )
   end
 })
--- Black formatter for py
--- vim.api.nvim_create_augroup("black_on_save", {})
--- vim.api.nvim_create_autocmd("BufWritePre", {
---   pattern = { "*.py" },
---   command = "Black",
---   group = "black_on_save"
--- })
